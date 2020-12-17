@@ -35,7 +35,7 @@ public class MovieStarResource {
     public List<MovieStarModel> findAllByIds(List<Integer> ids){
         HashMap<String, List<Integer>> params = new HashMap<String, List<Integer>>();
         params.put("ids", ids);
-        ResponseEntity<List<MovieStarModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieStarModel>>() {}, params);
+        ResponseEntity<List<MovieStarModel>> result = restTemplate.exchange(RESOURCE_URL + "?ids={ids}", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieStarModel>>() {}, params);
         return result.getBody();
     }
 

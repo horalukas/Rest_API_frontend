@@ -47,14 +47,14 @@ public class MovieResource {
     public List<MovieModel> findAllByDirector(String director){
         HashMap<String, String> params= new HashMap<String, String>();
         params.put("director", director);
-        ResponseEntity<List<MovieModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieModel>>() {}, params);
+        ResponseEntity<List<MovieModel>> result = restTemplate.exchange(RESOURCE_URL + "?director={director}", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieModel>>() {}, params);
         return result.getBody();
     }
 
     public List<MovieModel> findAllByRating(String rating){
         HashMap<String, String> params= new HashMap<String, String>();
         params.put("rating", rating);
-        ResponseEntity<List<MovieModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieModel>>() {}, params);
+        ResponseEntity<List<MovieModel>> result = restTemplate.exchange(RESOURCE_URL + "?rating={rating}", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieModel>>() {}, params);
         return result.getBody();
     }
 

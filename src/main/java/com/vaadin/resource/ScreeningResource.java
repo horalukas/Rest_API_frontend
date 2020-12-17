@@ -41,7 +41,7 @@ public class ScreeningResource {
     public List<ScreeningModel> findAllByMovieName(String name){
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("name", name);
-        ResponseEntity<List<ScreeningModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<ScreeningModel>>() {}, params);
+        ResponseEntity<List<ScreeningModel>> result = restTemplate.exchange(RESOURCE_URL + "?name={name}", HttpMethod.GET, null, new ParameterizedTypeReference<List<ScreeningModel>>() {}, params);
         return result.getBody();
     }
 
