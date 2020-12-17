@@ -1,5 +1,6 @@
 package com.vaadin.resource;
 
+import com.vaadin.model.MovieStarDTO;
 import com.vaadin.model.MovieStarModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
@@ -42,11 +43,11 @@ public class MovieStarResource {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("first", first);
         params.put("last", last);
-        return  restTemplate.getForObject(RESOURCE_URL, MovieStarModel.class, params);
+        return  restTemplate.getForObject(RESOURCE_URL + "?first={first}&last={last}", MovieStarModel.class, params);
     }
 
-    public List<MovieStarModel> findAll(){
-        ResponseEntity<List<MovieStarModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieStarModel>>() {});
+    public List<MovieStarDTO> findAll(){
+        ResponseEntity<List<MovieStarDTO>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieStarDTO>>() {});
         return result.getBody();
     }
 

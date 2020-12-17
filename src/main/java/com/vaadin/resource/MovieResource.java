@@ -1,5 +1,6 @@
 package com.vaadin.resource;
 
+import com.vaadin.model.MovieDTO;
 import com.vaadin.model.MovieGoerModel;
 import com.vaadin.model.MovieModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -32,15 +33,15 @@ public class MovieResource {
         return restTemplate.getForObject(RESOURCE_URL + ONE_URI, MovieModel.class, id);
     }
 
-    public List<MovieModel> findAll(){
-        ResponseEntity<List<MovieModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieModel>>() {});
+    public List<MovieDTO> findAll(){
+        ResponseEntity<List<MovieDTO>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieDTO>>() {});
         return result.getBody();
     }
 
     public MovieModel findByName(String name){
         HashMap<String, String> params= new HashMap<String, String>();
         params.put("name", name);
-        return  restTemplate.getForObject(RESOURCE_URL, MovieModel.class, params);
+        return  restTemplate.getForObject(RESOURCE_URL + "?name={name}", MovieModel.class, params);
     }
 
     public List<MovieModel> findAllByDirector(String director){

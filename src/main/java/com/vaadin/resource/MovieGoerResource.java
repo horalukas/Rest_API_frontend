@@ -1,5 +1,6 @@
 package com.vaadin.resource;
 
+import com.vaadin.model.MovieGoerDTO;
 import com.vaadin.model.MovieGoerModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
@@ -33,10 +34,8 @@ public class MovieGoerResource {
         return restTemplate.getForObject(RESOURCE_URL + ONE_URI, MovieGoerModel.class, id);
     }
 
-    public MovieGoerModel findByEmail(String email){
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("email", email);
-        return restTemplate.getForObject(RESOURCE_URL, MovieGoerModel.class, params);
+    public MovieGoerDTO findByEmail(String email){
+        return restTemplate.getForObject(RESOURCE_URL + "?email={email}", MovieGoerDTO.class, email);
     }
 
     public List<MovieGoerModel> findAll(){
@@ -53,8 +52,6 @@ public class MovieGoerResource {
     }
 
     public void deleteByEmail(String email){
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("email", email);
-        restTemplate.delete(RESOURCE_URL, params);
+        restTemplate.delete(RESOURCE_URL + "?email={email}", email);
     }
 }

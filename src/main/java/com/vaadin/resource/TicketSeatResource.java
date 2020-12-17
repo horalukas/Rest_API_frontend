@@ -1,6 +1,7 @@
 package com.vaadin.resource;
 
 import com.vaadin.model.MovieStarModel;
+import com.vaadin.model.TicketSeatDTO;
 import com.vaadin.model.TicketSeatModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
@@ -40,18 +41,18 @@ public class TicketSeatResource {
     public List<TicketSeatModel> findAllByOwnerEmail(String email){
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", email);
-        ResponseEntity<List<TicketSeatModel>> result = restTemplate.exchange(RESOURCE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<TicketSeatModel>>() {}, params);
+        ResponseEntity<List<TicketSeatModel>> result = restTemplate.exchange(RESOURCE_URL + "?email={email}", HttpMethod.GET, null, new ParameterizedTypeReference<List<TicketSeatModel>>() {}, params);
         return result.getBody();
     }
 
-    public List<TicketSeatModel> findAllByScreeningId(int id){
+    public List<TicketSeatDTO> findAllByScreeningId(int id){
         HashMap<String, Integer> params = new HashMap<String, Integer>();
         params.put("id", id);
-        ResponseEntity<List<TicketSeatModel>> result = restTemplate.exchange(RESOURCE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<TicketSeatModel>>() {}, params);
+        ResponseEntity<List<TicketSeatDTO>> result = restTemplate.exchange(RESOURCE_URL + "?id={id}", HttpMethod.GET, null, new ParameterizedTypeReference<List<TicketSeatDTO>>() {}, params);
         return result.getBody();
     }
 
-    public void update(TicketSeatModel data, int id){
+    public void update(TicketSeatModel data, long id){
         restTemplate.put(RESOURCE_URL + ONE_URI, data, id);
     }
 }

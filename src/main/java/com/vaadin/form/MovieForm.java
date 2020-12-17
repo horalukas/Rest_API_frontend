@@ -29,17 +29,11 @@ public class MovieForm extends FormLayout {
     Button save = new Button("Save");
     Button close = new Button("Cancel");
 
-    Binder<MovieModel> binder = new BeanValidationBinder<>(MovieModel.class);
 
     public MovieForm(List<Integer> stars, MovieStarResource movieStarResource){
         this.movieStarResource = movieStarResource;
         addClassName("form");
-        binder.bindInstanceFields(this);
         starIds.setItems(stars);
-        starIds.setItemLabelGenerator( star -> {
-            MovieStarModel movieStarModel = movieStarResource.findById(star);
-            return movieStarModel.getFirstName() + movieStarModel.getLastName();
-        });
         add(name,
                 director,
                 minutes,

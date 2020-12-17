@@ -1,5 +1,6 @@
 package com.vaadin.resource;
 
+import com.vaadin.model.ScreeningDTO;
 import com.vaadin.model.ScreeningModel;
 import com.vaadin.model.TicketSeatModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -32,8 +33,8 @@ public class ScreeningResource {
         return restTemplate.getForObject(RESOURCE_URL + ONE_URI, ScreeningModel.class, id);
     }
 
-    public List<ScreeningModel> findAll(){
-        ResponseEntity<List<ScreeningModel>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<ScreeningModel>>() {});
+    public List<ScreeningDTO> findAll(){
+        ResponseEntity<List<ScreeningDTO>> result = restTemplate.exchange(RESOURCE_URL + "/all", HttpMethod.GET, null, new ParameterizedTypeReference<List<ScreeningDTO>>() {});
         return result.getBody();
     }
 

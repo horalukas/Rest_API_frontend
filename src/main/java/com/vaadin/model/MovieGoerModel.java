@@ -1,7 +1,17 @@
 package com.vaadin.model;
 
+import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@Component
 public class MovieGoerModel {
+    @NotNull
+    @NotEmpty
     private String email;
+    @NotNull
+    @NotEmpty
     private String password;
 
     public MovieGoerModel(String email, String password) {

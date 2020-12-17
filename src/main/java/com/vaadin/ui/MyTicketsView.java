@@ -15,7 +15,7 @@ import com.vaadin.resource.TicketSeatResource;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route("my-tickets")
+@Route(value = "my-tickets", layout = UserLayout.class)
 public class MyTicketsView extends VerticalLayout {
 
     private MovieGoerResource movieGoerResource;
@@ -57,15 +57,6 @@ public class MyTicketsView extends VerticalLayout {
     }
 
     private void updateList(){
-        List<TicketSeatModel> list = ticketSeatResource.findAll();
-        List<TicketSeatModel> result = new ArrayList<>();
-        for (TicketSeatModel ticket : list) {
-            if(ticket.getOwnerId()!=null) {
-                if (movieGoerResource.findById(ticket.getOwnerId()).getEmail().equals(MovieGoerResource.currentUser)) {
-                    result.add(ticket);
-                }
-            }
-        }
-        grid.setItems(result);
+        grid.setItems(ticketSeatResource.findAllByOwnerEmail(MovieGoerResource.currentUser));
     }
 }

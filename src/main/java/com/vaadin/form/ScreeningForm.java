@@ -20,8 +20,8 @@ public class ScreeningForm extends FormLayout {
 
     DateTimePicker dateTimePicker = new DateTimePicker("DateTime");
     Checkbox _3D = new Checkbox("3D");
-    ComboBox<AuditoriumModel> auditorium = new ComboBox<>("Auditorium");
-    ComboBox<MovieModel> movie = new ComboBox<>("Movie");
+    ComboBox<Integer> auditorium = new ComboBox<>("Auditorium");
+    ComboBox<Integer> movie = new ComboBox<>("Movie");
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");

@@ -3,15 +3,16 @@ package com.vaadin.ui;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import com.vaadin.model.AuditoriumDTO;
 import com.vaadin.model.AuditoriumModel;
 import com.vaadin.resource.AuditoriumResource;
 import com.vaadin.resource.MovieGoerResource;
 
-@Route("admin/auditoriums")
+@Route(value = "admin/auditoriums", layout = AdminLayout.class)
 public class AuditoriumsView extends VerticalLayout {
     private MovieGoerResource movieGoerResource;
     private AuditoriumResource auditoriumResource;
-    private Grid<AuditoriumModel> grid = new Grid<>(AuditoriumModel.class);
+    private Grid<AuditoriumDTO> grid = new Grid<>(AuditoriumDTO.class);
 
     public AuditoriumsView(MovieGoerResource movieGoerResource, AuditoriumResource auditoriumResource){
         this.auditoriumResource = auditoriumResource;
