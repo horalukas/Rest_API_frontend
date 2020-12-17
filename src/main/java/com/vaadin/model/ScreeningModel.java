@@ -1,14 +1,21 @@
 package com.vaadin.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@Component
 public class ScreeningModel {
    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd-hh-mm")
+    @NotNull
     private Date time;
+    @NotNull
     private boolean _3D;
+    @NotNull
     private Integer auditoriumId;
+    @NotNull
     private Integer movieId;
 
     public ScreeningModel() {

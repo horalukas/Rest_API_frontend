@@ -1,5 +1,7 @@
 package com.vaadin.model;
 
+import org.springframework.context.annotation.Bean;
+
 public class AuditoriumModel {
     private int capacity;
 

@@ -1,7 +1,18 @@
 package com.vaadin.model;
 
+import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@Component
 public class MovieStarModel {
+    @NotNull
+    @NotEmpty
     private String firstName;
+
+    @NotNull
+    @NotEmpty
     private String lastName;
 
     public MovieStarModel() {

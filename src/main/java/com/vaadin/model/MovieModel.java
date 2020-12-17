@@ -1,11 +1,23 @@
 package com.vaadin.model;
 
+import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Component
 public class MovieModel {
+    @NotNull
+    @NotEmpty
     private String name;
+    @NotNull
+    @NotEmpty
     private String director;
+    @NotNull
     private int minutes;
+    @NotEmpty
+    @NotNull
     private String rating;
     private List<Integer> starIds;
 

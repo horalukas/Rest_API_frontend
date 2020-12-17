@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Route("")
-public class MainView extends VerticalLayout {
-    public MainView() {
+public class LoginView extends VerticalLayout {
+    public LoginView() {
 
 
     }
