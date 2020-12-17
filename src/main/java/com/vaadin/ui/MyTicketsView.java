@@ -49,6 +49,10 @@ public class MyTicketsView extends VerticalLayout {
             ScreeningModel screeningModel = screeningResource.findById(ticketSeatModel.getScreeningId());
             return screeningModel.getTime();
         }).setHeader("DateTime");
+        grid.addColumn(ticketSeatModel -> {
+            ScreeningModel screeningModel = screeningResource.findById(ticketSeatModel.getScreeningId());
+            return screeningModel.getAuditoriumId();
+        }).setHeader("Auditorium");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
     }
 
